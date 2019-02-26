@@ -1,0 +1,31 @@
+Wed Jan 30 15:07:48 JST 2019
+utils/fix_data_dir.sh: file data//sre10_test_c5/utt2spk is not in sorted order or not unique, sorting it
+utils/fix_data_dir.sh: file data//sre10_test_c5/spk2utt is not in sorted order or not unique, sorting it
+utils/fix_data_dir.sh: file data//sre10_test_c5/wav.scp is not in sorted order or not unique, sorting it
+utils/fix_data_dir.sh: file data//sre10_test_c5/spk2gender is not in sorted order or not unique, sorting it
+fix_data_dir.sh: kept all 712 utterances.
+fix_data_dir.sh: old files are kept in data//sre10_test_c5/.backup
+utils/validate_data_dir.sh: Successfully validated data-directory data//sre10_test_c5
+steps/make_mfcc.sh --mfcc-config conf/mfcc.conf --nj 40 --cmd run.pl data/sre10_test_c5 exp/make_mfcc /work/lyair/Mismatch_DAC13_baseline/mfcc
+utils/validate_data_dir.sh: Successfully validated data-directory data/sre10_test_c5
+steps/make_mfcc.sh: [info]: no segments file exists: assuming wav.scp indexed by utterance.
+Succeeded creating MFCC features for sre10_test_c5
+fix_data_dir.sh: kept all 712 utterances.
+fix_data_dir.sh: old files are kept in data/sre10_test_c5/.backup
+sid/compute_vad_decision.sh --nj 40 --cmd run.pl data/sre10_test_c5 exp/make_vad /work/lyair/Mismatch_DAC13_baseline/mfcc
+Created VAD output for sre10_test_c5
+fix_data_dir.sh: kept all 712 utterances.
+fix_data_dir.sh: old files are kept in data/sre10_test_c5/.backup
+sid/extract_ivectors.sh --cmd run.pl --mem 6G --nj 40 exp/extractor data/sre10_test_c5 exp/ivectors_sre10_test_c5
+sid/extract_ivectors.sh: extracting iVectors
+sid/extract_ivectors.sh: combining iVectors across jobs
+sid/extract_ivectors.sh: computing mean of iVectors for each speaker and length-normalizing
+Wed Jan 30 15:16:04 JST 2019
+utils/subset_data_dir.sh: reducing #utt from 712 to 357
+utils/subset_data_dir.sh: reducing #utt from 11983 to 6732
+utils/subset_data_dir.sh: reducing #utt from 712 to 355
+utils/subset_data_dir.sh: reducing #utt from 11983 to 5251
+utils/subset_data_dir.sh: reducing #utt from 33037 to 17433
+utils/subset_data_dir.sh: reducing #utt from 33037 to 15604
+local/plda_scoring_0.sh data/swbd_train data/sre10_train data/sre10_test_c5 exp/ivectors_swbd_train exp/ivectors_sre10_train exp/ivectors_sre10_test_c5 data/sre10_test_c2/trials exp/scores_gmm_2048_ind_pooled
+run.pl: job failed, log is in exp/scores_gmm_2048_ind_pooled/log/plda_scoring.log

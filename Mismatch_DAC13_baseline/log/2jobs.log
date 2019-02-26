@@ -1,0 +1,54 @@
+Tue Jan 29 22:53:37 JST 2019
+utils/fix_data_dir.sh: file data/swbd_train/utt2spk is not in sorted order or not unique, sorting it
+utils/fix_data_dir.sh: file data/swbd_train/wav.scp is not in sorted order or not unique, sorting it
+fix_data_dir.sh: kept all 33039 utterances.
+fix_data_dir.sh: old files are kept in data/swbd_train/.backup
+utils/validate_data_dir.sh: Successfully validated data-directory data/swbd_train
+steps/make_mfcc.sh --mfcc-config conf/mfcc.conf --nj 20 --cmd run.pl data/swbd_train exp/make_mfcc /work/lyair/Mismatch_DAC13_baseline/mfcc
+utils/validate_data_dir.sh: Successfully validated data-directory data/swbd_train
+steps/make_mfcc.sh: [info]: no segments file exists: assuming wav.scp indexed by utterance.
+It seems not all of the feature files were successfully processed (33037 != 33039);
+consider using utils/fix_data_dir.sh data/swbd_train
+Succeeded creating MFCC features for swbd_train
+fix_data_dir.sh: kept 33037 utterances out of 33039
+fix_data_dir.sh: old files are kept in data/swbd_train/.backup
+sid/compute_vad_decision.sh --nj 40 --cmd run.pl data/swbd_train exp/make_vad /work/lyair/Mismatch_DAC13_baseline/mfcc
+Created VAD output for swbd_train
+fix_data_dir.sh: kept all 33037 utterances.
+fix_data_dir.sh: old files are kept in data/swbd_train/.backup
+Wed Jan 30 00:13:50 JST 2019
+utils/fix_data_dir.sh: file data//sre10_test_c2/utt2spk is not in sorted order or not unique, sorting it
+utils/fix_data_dir.sh: file data//sre10_test_c2/spk2utt is not in sorted order or not unique, sorting it
+utils/fix_data_dir.sh: file data//sre10_test_c2/wav.scp is not in sorted order or not unique, sorting it
+utils/fix_data_dir.sh: file data//sre10_test_c2/spk2gender is not in sorted order or not unique, sorting it
+fix_data_dir.sh: kept all 7186 utterances.
+fix_data_dir.sh: old files are kept in data//sre10_test_c2/.backup
+utils/validate_data_dir.sh: Successfully validated data-directory data//sre10_test_c2
+steps/make_mfcc.sh --mfcc-config conf/mfcc.conf --nj 40 --cmd run.pl data/sre10_test_c2 exp/make_mfcc /work/lyair/Mismatch_DAC13_baseline/mfcc
+steps/make_mfcc.sh: moving data/sre10_test_c2/feats.scp to data/sre10_test_c2/.backup
+utils/validate_data_dir.sh: Successfully validated data-directory data/sre10_test_c2
+steps/make_mfcc.sh: [info]: no segments file exists: assuming wav.scp indexed by utterance.
+Succeeded creating MFCC features for sre10_test_c2
+fix_data_dir.sh: kept all 7186 utterances.
+fix_data_dir.sh: old files are kept in data/sre10_test_c2/.backup
+sid/compute_vad_decision.sh --nj 40 --cmd run.pl data/sre10_test_c2 exp/make_vad /work/lyair/Mismatch_DAC13_baseline/mfcc
+Created VAD output for sre10_test_c2
+fix_data_dir.sh: kept all 7186 utterances.
+fix_data_dir.sh: old files are kept in data/sre10_test_c2/.backup
+sid/extract_ivectors.sh --cmd run.pl --mem 6G --nj 40 exp/extractor data/sre10_test_c2 exp/ivectors_sre10_test_c2
+sid/extract_ivectors.sh: extracting iVectors
+sid/extract_ivectors.sh: combining iVectors across jobs
+sid/extract_ivectors.sh: computing mean of iVectors for each speaker and length-normalizing
+Wed Jan 30 01:32:10 JST 2019
+utils/subset_data_dir.sh: reducing #utt from 7186 to 3858
+utils/subset_data_dir.sh: reducing #utt from 11983 to 6732
+utils/subset_data_dir.sh: reducing #utt from 7186 to 3328
+utils/subset_data_dir.sh: reducing #utt from 11983 to 5251
+utils/subset_data_dir.sh: reducing #utt from 36470 to 23882
+utils/subset_data_dir.sh: reducing #utt from 36470 to 12588
+local/plda_scoring_0.sh data/mixer_train data/sre10_train data/sre10_test_c2 exp/ivectors_mixer_train exp/ivectors_sre10_train exp/ivectors_sre10_test_c2 data/sre10_test_c2/trials exp/scores_gmm_2048_ind_pooled
+GMM-2048 EER and mini-DCF for C2 condition
+EER: 19.46
+minDCF(p-target=0.01): 0.9267
+minDCF(p-target=0.001): 0.9828
+Wed Jan 30 01:34:22 JST 2019

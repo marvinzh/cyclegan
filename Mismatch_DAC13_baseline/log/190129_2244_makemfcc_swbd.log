@@ -1,0 +1,9 @@
+Tue Jan 29 22:44:20 JST 2019
+utils/fix_data_dir.sh: file data/swbd_train/utt2spk is not in sorted order or not unique, sorting it
+utils/fix_data_dir.sh: file data/swbd_train/wav.scp is not in sorted order or not unique, sorting it
+fix_data_dir.sh: kept all 33039 utterances.
+fix_data_dir.sh: old files are kept in data/swbd_train/.backup
+utils/validate_data_dir.sh: Successfully validated data-directory data/swbd_train
+steps/make_mfcc.sh --mfcc-config conf/mfcc.conf --nj 20 --cmd run.pl data/swbd_train exp/make_mfcc /work/lyair/Mismatch_DAC13_baseline/mfcc
+utils/validate_data_dir.sh: Successfully validated data-directory data/swbd_train
+steps/make_mfcc.sh: [info]: no segments file exists: assuming wav.scp indexed by utterance.

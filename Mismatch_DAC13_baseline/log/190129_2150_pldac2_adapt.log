@@ -1,0 +1,12 @@
+Tue Jan 29 21:50:50 JST 2019
+local/pre_processing.sh exp/ivectors_mixer_train exp/pre_processing
+local/pre_processing.sh: Computing centering mean of SRE_1phn data
+local/pre_processing.sh: Computing whitening transform using MIXER_1phn data
+utils/subset_data_dir.sh: reducing #utt from 7186 to 3858
+utils/subset_data_dir.sh: reducing #utt from 11983 to 6732
+utils/subset_data_dir.sh: reducing #utt from 7186 to 3328
+utils/subset_data_dir.sh: reducing #utt from 11983 to 5251
+utils/subset_data_dir.sh: reducing #utt from 33037 to 17433
+utils/subset_data_dir.sh: reducing #utt from 33037 to 15604
+local/plda_scoring.sh data/sre_swbd_train data/sre10_train data/sre10_test_c2 exp/ivectors_swbd_train exp/ivectors_sre10_train exp/ivectors_sre10_test_c2 data/sre10_test_c2/trials exp/scores_gmm_2048_ind_pooled
+run.pl: job failed, log is in exp/ivectors_swbd_train/log/lda.log

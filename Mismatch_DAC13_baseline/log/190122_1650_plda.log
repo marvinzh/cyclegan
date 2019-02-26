@@ -1,0 +1,17 @@
+Tue Jan 22 16:50:33 JST 2019
+sid/new_spkivec.sh --cmd run.pl --mem 8G --nj 40 data/sre10_train exp/C5/ivectors_adpt_sre10_enroll
+sid/new_spkivec.sh: computing mean of iVectors for each speaker and length-normalizing
+sid/new_spkivec.sh --cmd run.pl --mem 8G --nj 40 data/sre10_test exp/C5/ivectors_adpt_sre10_test
+sid/new_spkivec.sh: computing mean of iVectors for each speaker and length-normalizing
+utils/subset_data_dir.sh: reducing #utt from 767 to 379
+utils/subset_data_dir.sh: reducing #utt from 11983 to 6732
+utils/subset_data_dir.sh: reducing #utt from 767 to 388
+utils/subset_data_dir.sh: reducing #utt from 11983 to 5251
+utils/subset_data_dir.sh: reducing #utt from 33037 to 17433
+utils/subset_data_dir.sh: reducing #utt from 33037 to 15604
+local/plda_scoring.sh data/swbd_train data/sre10_train data/sre10_test exp/ivectors_swbd_train exp/C5/ivectors_adpt_sre10_enroll exp/C5/ivectors_adpt_sre10_test data/sre10_test/trials exp/scores_gmm_2048_ind_pooled
+GMM-2048 EER and mini-DCF
+ind pooled EER: 14.53%
+minDCF(p-target=0.01): 0.7658
+minDCF(p-target=0.001): 0.9110
+Tue Jan 22 16:51:45 JST 2019

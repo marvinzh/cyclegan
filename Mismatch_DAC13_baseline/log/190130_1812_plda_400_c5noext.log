@@ -1,0 +1,12 @@
+Wed Jan 30 18:12:57 JST 2019
+local/plda_with_prep.sh --pre_processing true data/sre_1phn_train data/sre10_train data/sre10_test_c5 data/sre_1phn_train exp/ivectors_sre_1phn_train exp/ivectors_sre_1phn_train exp/ivectors_sre10_train exp/ivectors_sre10_test_c5 data/sre10_test_c5/trials exp/scores_gmm_2048_ind_pooled
+Usage: local/plda_with_prep.sh <plda-data-dir> <enroll-data-dir> <test-data-dir> <prep_data_dir> <<prep_ivec_dir> <plda-ivec-dir> <enroll-ivec-dir> <test-ivec-dir> <trials-file> <scores-dir>
+local/plda_with_prep.sh: Computing centering mean
+local/plda_with_prep.sh: Computing whitening transform instead of LDA dim-reduction
+local/plda_with_prep.sh: Computing LDA dim-reduction transform instead of whitening
+local/plda_with_prep.sh: Do pre process: Yes.
+GMM-2048 EER and mini-DCF for C5 condition
+EER: 6.921
+minDCF(p-target=0.01): 0.4897
+minDCF(p-target=0.001): 0.6971
+Wed Jan 30 18:13:42 JST 2019

@@ -1,0 +1,24 @@
+Tue Jan 29 15:26:52 JST 2019
+steps/make_mfcc.sh --mfcc-config conf/mfcc.conf --nj 40 --cmd run.pl data/sre10_train exp/make_mfcc /work/lyair/Mismatch_DAC13_baseline/mfcc
+utils/validate_data_dir.sh: Successfully validated data-directory data/sre10_train
+steps/make_mfcc.sh: [info]: no segments file exists: assuming wav.scp indexed by utterance.
+Succeeded creating MFCC features for sre10_train
+fix_data_dir.sh: kept all 6402 utterances.
+fix_data_dir.sh: old files are kept in data/sre10_train/.backup
+sid/compute_vad_decision.sh --nj 40 --cmd run.pl data/sre10_train exp/make_vad /work/lyair/Mismatch_DAC13_baseline/mfcc
+Created VAD output for sre10_train
+fix_data_dir.sh: kept all 6402 utterances.
+fix_data_dir.sh: old files are kept in data/sre10_train/.backup
+sid/extract_ivectors.sh --cmd run.pl --mem 6G --nj 40 exp/extractor data/sre10_train exp/ivectors_sre10_train
+sid/extract_ivectors.sh: extracting iVectors
+sid/extract_ivectors.sh: combining iVectors across jobs
+sid/extract_ivectors.sh: computing mean of iVectors for each speaker and length-normalizing
+Tue Jan 29 16:31:28 JST 2019
+utils/subset_data_dir.sh: reducing #utt from 7186 to 3858
+utils/subset_data_dir.sh: reducing #utt from 6402 to 3576
+utils/subset_data_dir.sh: reducing #utt from 7186 to 3328
+utils/subset_data_dir.sh: reducing #utt from 6402 to 2826
+utils/subset_data_dir.sh: reducing #utt from 33037 to 17433
+utils/subset_data_dir.sh: reducing #utt from 33037 to 15604
+local/plda_scoring_0.sh data/swbd_train data/sre10_train data/sre10_test_c2 exp/ivectors_swbd_train exp/ivectors_sre10_train exp/ivectors_sre10_test_c2 data/sre10_test_c2/trials exp/scores_gmm_2048_ind_pooled
+run.pl: job failed, log is in exp/scores_gmm_2048_ind_pooled/log/plda_scoring.log

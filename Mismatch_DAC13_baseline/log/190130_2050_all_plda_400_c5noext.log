@@ -1,0 +1,45 @@
+Wed Jan 30 20:50:36 JST 2019
+System 4
+local/plda_with_prep.sh --pre_processing true data/swbd_train data/sre10_train data/sre10_test_c5 data/sre_1phn_train exp/ivectors_sre_1phn_train exp/ivectors_swbd_train exp/ivectors_sre10_train exp/ivectors_sre10_test_c5 data/sre10_test_c5/trials exp/scores_gmm_2048_ind_pooled
+local/plda_with_prep.sh: Computing centering mean
+local/plda_with_prep.sh: Computing whitening transform instead of LDA dim-reduction
+local/plda_with_prep.sh: Computing LDA dim-reduction transform instead of whitening
+local/plda_with_prep.sh: Do pre process: Yes.
+GMM-2048 EER and mini-DCF for C5 condition
+EER: 6.638
+minDCF(p-target=0.01): 0.5045
+minDCF(p-target=0.001): 0.7147
+
+System 3
+local/plda_with_prep.sh --pre_processing true data/sre_1phn_train data/sre10_train data/sre10_test_c5 data/sre_1phn_train exp/ivectors_sre_1phn_train exp/ivectors_sre_1phn_train exp/ivectors_sre10_train exp/ivectors_sre10_test_c5 data/sre10_test_c5/trials exp/scores_gmm_2048_ind_pooled
+local/plda_with_prep.sh: Computing centering mean
+local/plda_with_prep.sh: Computing whitening transform instead of LDA dim-reduction
+local/plda_with_prep.sh: Computing LDA dim-reduction transform instead of whitening
+local/plda_with_prep.sh: Do pre process: Yes.
+GMM-2048 EER and mini-DCF for C5 condition
+EER: 7.062
+minDCF(p-target=0.01): 0.4817
+minDCF(p-target=0.001): 0.6728
+
+System 2
+local/plda_with_prep.sh --pre_processing true data/swbd_train data/sre10_train data/sre10_test_c5 data/mixer_train exp/ivectors_mixer_train exp/ivectors_swbd_train exp/ivectors_sre10_train exp/ivectors_sre10_test_c5 data/sre10_test_c5/trials exp/scores_gmm_2048_ind_pooled
+local/plda_with_prep.sh: Computing centering mean
+local/plda_with_prep.sh: Computing whitening transform instead of LDA dim-reduction
+local/plda_with_prep.sh: Computing LDA dim-reduction transform instead of whitening
+local/plda_with_prep.sh: Do pre process: Yes.
+GMM-2048 EER and mini-DCF for C5 condition
+EER: 4.379
+minDCF(p-target=0.01): 0.4107
+minDCF(p-target=0.001): 0.6041
+
+System 1
+local/plda_with_prep.sh --pre_processing true data/mixer_train data/sre10_train data/sre10_test_c5 data/mixer_train exp/ivectors_mixer_train exp/ivectors_mixer_train exp/ivectors_sre10_train exp/ivectors_sre10_test_c5 data/sre10_test_c5/trials exp/scores_gmm_2048_ind_pooled
+local/plda_with_prep.sh: Computing centering mean
+local/plda_with_prep.sh: Computing whitening transform instead of LDA dim-reduction
+local/plda_with_prep.sh: Computing LDA dim-reduction transform instead of whitening
+local/plda_with_prep.sh: Do pre process: Yes.
+GMM-2048 EER and mini-DCF for C5 condition
+EER: 3.39
+minDCF(p-target=0.01): 0.3092
+minDCF(p-target=0.001): 0.5349
+Wed Jan 30 20:54:12 JST 2019

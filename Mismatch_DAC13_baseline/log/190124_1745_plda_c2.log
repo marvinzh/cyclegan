@@ -1,0 +1,33 @@
+Thu Jan 24 17:45:42 JST 2019
+Thu Jan 24 17:45:42 JST 2019
+utils/subset_data_dir.sh: reducing #utt from 7186 to 3858
+utils/subset_data_dir.sh: reducing #utt from 11983 to 6732
+utils/subset_data_dir.sh: reducing #utt from 7186 to 3328
+utils/subset_data_dir.sh: reducing #utt from 11983 to 5251
+utils/subset_data_dir.sh: reducing #utt from 33037 to 17433
+utils/subset_data_dir.sh: reducing #utt from 33037 to 15604
+local/plda_scoring.sh data/swbd_train data/sre10_train data/sre10_test_c2 exp/ivectors_swbd_train exp/ivectors_sre10_train exp/ivectors_sre10_test_c2 data/sre10_test_c2/trials exp/scores_gmm_2048_ind_pooled
+local/plda_scoring.sh --use-existing-models true data/swbd_train data/sre10_train_female data/sre10_test_c2_female exp/ivectors_swbd_train exp/ivectors_sre10_train_female exp/ivectors_sre10_test_c2_female data/sre10_test_c2_female/trials exp/scores_gmm_2048_ind_female
+local/plda_scoring.sh --use-existing-models true data/swbd_train data/sre10_train_male data/sre10_test_c2_male exp/ivectors_swbd_train exp/ivectors_sre10_train_male exp/ivectors_sre10_test_c2_male data/sre10_test_c2_male/trials exp/scores_gmm_2048_ind_male
+local/plda_scoring.sh data/swbd_train_female data/sre10_train_female data/sre10_test_c2_female exp/ivectors_swbd_train exp/ivectors_sre10_train_female exp/ivectors_sre10_test_c2_female data/sre10_test_c2_female/trials exp/scores_gmm_2048_dep_female
+local/plda_scoring.sh data/swbd_train_male data/sre10_train_male data/sre10_test_c2_male exp/ivectors_swbd_train exp/ivectors_sre10_train_male exp/ivectors_sre10_test_c2_male data/sre10_test_c2_male/trials exp/scores_gmm_2048_dep_male
+GMM-2048 EER and mini-DCF for C2 condition
+EER ind female: 18.69
+minDCF(p-target=0.01) ind female: 0.8993
+minDCF(p-target=0.001) ind female: 0.9869
+EER ind male: 13.11
+minDCF(p-target=0.01) ind male: 0.8993
+minDCF(p-target=0.001) ind male: 0.9869
+EER ind pooled: 16.21
+minDCF(p-target=0.01) ind pooled: 0.8993
+minDCF(p-target=0.001) ind pooled: 0.9869
+EER dep female: 18.51
+minDCF(p-target=0.01) dep female: 0.8993
+minDCF(p-target=0.001) dep female: 0.9869
+EER dep male: 12.9
+minDCF(p-target=0.01) dep male: 0.8993
+minDCF(p-target=0.001) dep male: 0.9869
+EER dep pooled: 16.01
+minDCF(p-target=0.01) dep pooled: 0.8993
+minDCF(p-target=0.001) dep pooled: 0.9869
+Thu Jan 24 17:53:45 JST 2019

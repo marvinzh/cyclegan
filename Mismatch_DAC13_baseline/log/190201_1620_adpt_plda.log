@@ -1,0 +1,14 @@
+Fri Feb  1 16:20:13 JST 2019
+sid/new_spkivec.sh data/sre10_train exp/C5/ep50/ivectors_adpt_sre10_enroll
+sid/new_spkivec.sh: Remake speaker-level i-vectors files for sre10 enroll data.
+local/plda_with_prep.sh --pre_processing true data/swbd_train data/sre10_train data/sre10_test_c5 data/mixer_train exp/ivectors_mixer_train exp/ivectors_swbd_train exp/C5/ep50/ivectors_adpt_sre10_enroll exp/C5/ep50/ivectors_adpt_sre10_test_c5 data/sre10_test_c5/trials exp/scores_gmm_2048_ind_pooled
+local/plda_with_prep.sh: Computing centering mean
+local/plda_with_prep.sh: Computing whitening transform instead of LDA dim-reduction
+local/plda_with_prep.sh: Computing LDA dim-reduction transform instead of whitening
+local/plda_with_prep.sh: Do pre process: Yes.
+GMM-2048 EER and mini-DCF for C5 condition of ep50
+EER: 5.508
+minDCF(p-target=0.01): 0.4612
+minDCF(p-target=0.001): 0.6027
+
+Fri Feb  1 16:21:16 JST 2019

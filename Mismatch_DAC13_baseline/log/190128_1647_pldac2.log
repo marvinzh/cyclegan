@@ -1,0 +1,7 @@
+Mon Jan 28 16:47:22 JST 2019
+local/plda_scoring.sh data/swbd_train data/sre10_train data/sre10_test_c2 exp/ivectors_swbd_train exp/ivectors_sre10_train exp/ivectors_sre10_test_c2 data/sre10_test_c2/trials exp/scores_gmm_2048_ind_pooled
+GMM-2048 EER and mini-DCF for C2 condition
+EER: 25.19
+minDCF(p-target=0.01): 0.9754
+minDCF(p-target=0.001): 0.9948
+Mon Jan 28 16:49:32 JST 2019

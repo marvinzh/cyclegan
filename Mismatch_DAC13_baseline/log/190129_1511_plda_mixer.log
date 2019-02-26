@@ -1,0 +1,13 @@
+Tue Jan 29 15:11:37 JST 2019
+utils/subset_data_dir.sh: reducing #utt from 7186 to 3858
+utils/subset_data_dir.sh: reducing #utt from 11983 to 6732
+utils/subset_data_dir.sh: reducing #utt from 7186 to 3328
+utils/subset_data_dir.sh: reducing #utt from 11983 to 5251
+utils/subset_data_dir.sh: reducing #utt from 36470 to 23882
+utils/subset_data_dir.sh: reducing #utt from 36470 to 12588
+local/plda_scoring.sh data/mixer_train data/sre10_train data/sre10_test_c2 exp/ivectors_mixer_train exp/ivectors_sre10_train exp/ivectors_sre10_test_c2 data/sre10_test_c2/trials exp/scores_gmm_2048_ind_pooled
+GMM-2048 EER and mini-DCF for C2 condition
+EER: 24.96
+minDCF(p-target=0.01): 0.9749
+minDCF(p-target=0.001): 0.9980
+Tue Jan 29 15:13:42 JST 2019

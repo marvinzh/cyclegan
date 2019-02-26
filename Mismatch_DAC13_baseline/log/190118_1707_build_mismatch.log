@@ -1,0 +1,112 @@
+Fri Jan 18 17:07:18 JST 2019
+utils/fix_data_dir.sh: file data//sre10_test/utt2spk is not in sorted order or not unique, sorting it
+utils/fix_data_dir.sh: file data//sre10_test/spk2utt is not in sorted order or not unique, sorting it
+utils/fix_data_dir.sh: file data//sre10_test/wav.scp is not in sorted order or not unique, sorting it
+utils/fix_data_dir.sh: file data//sre10_test/spk2gender is not in sorted order or not unique, sorting it
+fix_data_dir.sh: kept all 767 utterances.
+fix_data_dir.sh: old files are kept in data//sre10_test/.backup
+utils/validate_data_dir.sh: Successfully validated data-directory data//sre10_test
+fix_data_dir.sh: kept all 11983 utterances.
+fix_data_dir.sh: old files are kept in data//sre10_train/.backup
+utils/validate_data_dir.sh: Successfully validated data-directory data//sre10_train
+utils/fix_data_dir.sh: file data/swbd_train/utt2spk is not in sorted order or not unique, sorting it
+utils/fix_data_dir.sh: file data/swbd_train/wav.scp is not in sorted order or not unique, sorting it
+fix_data_dir.sh: kept all 33039 utterances.
+fix_data_dir.sh: old files are kept in data/swbd_train/.backup
+utils/validate_data_dir.sh: Successfully validated data-directory data/swbd_train
+steps/make_mfcc.sh --mfcc-config conf/mfcc.conf --nj 40 --cmd run.pl data/swbd_train exp/make_mfcc /work/lyair/Mismatch_DAC13_baseline/mfcc
+utils/validate_data_dir.sh: Successfully validated data-directory data/swbd_train
+steps/make_mfcc.sh: [info]: no segments file exists: assuming wav.scp indexed by utterance.
+It seems not all of the feature files were successfully processed (33037 != 33039);
+consider using utils/fix_data_dir.sh data/swbd_train
+Succeeded creating MFCC features for swbd_train
+steps/make_mfcc.sh --mfcc-config conf/mfcc.conf --nj 40 --cmd run.pl data/sre10_train exp/make_mfcc /work/lyair/Mismatch_DAC13_baseline/mfcc
+utils/validate_data_dir.sh: Successfully validated data-directory data/sre10_train
+steps/make_mfcc.sh: [info]: no segments file exists: assuming wav.scp indexed by utterance.
+Succeeded creating MFCC features for sre10_train
+steps/make_mfcc.sh --mfcc-config conf/mfcc.conf --nj 40 --cmd run.pl data/sre10_test exp/make_mfcc /work/lyair/Mismatch_DAC13_baseline/mfcc
+utils/validate_data_dir.sh: Successfully validated data-directory data/sre10_test
+steps/make_mfcc.sh: [info]: no segments file exists: assuming wav.scp indexed by utterance.
+Succeeded creating MFCC features for sre10_test
+fix_data_dir.sh: kept 33037 utterances out of 33039
+fix_data_dir.sh: old files are kept in data/swbd_train/.backup
+fix_data_dir.sh: kept all 11983 utterances.
+fix_data_dir.sh: old files are kept in data/sre10_train/.backup
+fix_data_dir.sh: kept all 767 utterances.
+fix_data_dir.sh: old files are kept in data/sre10_test/.backup
+sid/compute_vad_decision.sh --nj 40 --cmd run.pl data/swbd_train exp/make_vad /work/lyair/Mismatch_DAC13_baseline/mfcc
+Created VAD output for swbd_train
+sid/compute_vad_decision.sh --nj 40 --cmd run.pl data/sre10_train exp/make_vad /work/lyair/Mismatch_DAC13_baseline/mfcc
+Created VAD output for sre10_train
+sid/compute_vad_decision.sh --nj 40 --cmd run.pl data/sre10_test exp/make_vad /work/lyair/Mismatch_DAC13_baseline/mfcc
+Created VAD output for sre10_test
+fix_data_dir.sh: kept all 33037 utterances.
+fix_data_dir.sh: old files are kept in data/swbd_train/.backup
+fix_data_dir.sh: kept all 11983 utterances.
+fix_data_dir.sh: old files are kept in data/sre10_train/.backup
+fix_data_dir.sh: kept all 767 utterances.
+fix_data_dir.sh: old files are kept in data/sre10_test/.backup
+Fri Jan 18 18:54:48 JST 2019
+sid/train_diag_ubm.sh --cmd run.pl --mem 20G --nj 20 --num-threads 8 data/swbd_train 2048 exp/diag_ubm_2048
+sid/train_diag_ubm.sh: initializing model from E-M in memory, 
+sid/train_diag_ubm.sh: starting from 1024 Gaussians, reaching 2048;
+sid/train_diag_ubm.sh: for 20 iterations, using at most 500000 frames of data
+Getting Gaussian-selection info
+sid/train_diag_ubm.sh: will train for 4 iterations, in parallel over
+sid/train_diag_ubm.sh: 20 machines, parallelized with 'run.pl --mem 20G'
+sid/train_diag_ubm.sh: Training pass 0
+sid/train_diag_ubm.sh: Training pass 1
+sid/train_diag_ubm.sh: Training pass 2
+sid/train_diag_ubm.sh: Training pass 3
+Fri Jan 18 20:52:26 JST 2019
+sid/train_full_ubm.sh --nj 20 --remove-low-count-gaussians false --cmd run.pl --mem 20G data/swbd_train exp/diag_ubm_2048 exp/full_ubm_2048
+sid/train_full_ubm.sh: doing Gaussian selection (using diagonal form of model; selecting 20 indices)
+Pass 0
+Pass 1
+Pass 2
+Pass 3
+Sat Jan 19 00:59:36 JST 2019
+sid/train_ivector_extractor.sh --cmd run.pl --mem 20G --ivector-dim 600 --num-iters 5 exp/full_ubm_2048/final.ubm data/swbd_train exp/extractor
+sid/train_ivector_extractor.sh: doing Gaussian selection and posterior computation
+Accumulating stats (pass 0)
+Summing accs (pass 0)
+Updating model (pass 0)
+Accumulating stats (pass 1)
+Summing accs (pass 1)
+Updating model (pass 1)
+Accumulating stats (pass 2)
+Summing accs (pass 2)
+Updating model (pass 2)
+Accumulating stats (pass 3)
+Summing accs (pass 3)
+Updating model (pass 3)
+Accumulating stats (pass 4)
+Summing accs (pass 4)
+Updating model (pass 4)
+Sat Jan 19 20:08:35 JST 2019
+sid/extract_ivectors.sh --cmd run.pl --mem 8G --nj 20 exp/extractor data/sre10_train exp/ivectors_sre10_train
+sid/extract_ivectors.sh: extracting iVectors
+sid/extract_ivectors.sh: combining iVectors across jobs
+sid/extract_ivectors.sh: computing mean of iVectors for each speaker and length-normalizing
+sid/extract_ivectors.sh --cmd run.pl --mem 8G --nj 20 exp/extractor data/sre10_test exp/ivectors_sre10_test
+sid/extract_ivectors.sh: extracting iVectors
+sid/extract_ivectors.sh: combining iVectors across jobs
+sid/extract_ivectors.sh: computing mean of iVectors for each speaker and length-normalizing
+Sat Jan 19 21:52:16 JST 2019
+sid/extract_ivectors.sh --cmd run.pl --mem 8G --nj 20 exp/extractor data/swbd_train exp/ivectors_swbd_train
+sid/extract_ivectors.sh: extracting iVectors
+sid/extract_ivectors.sh: combining iVectors across jobs
+sid/extract_ivectors.sh: computing mean of iVectors for each speaker and length-normalizing
+Sun Jan 20 02:29:37 JST 2019
+utils/subset_data_dir.sh: reducing #utt from 767 to 379
+utils/subset_data_dir.sh: reducing #utt from 11983 to 6732
+utils/subset_data_dir.sh: reducing #utt from 767 to 388
+utils/subset_data_dir.sh: reducing #utt from 11983 to 5251
+utils/subset_data_dir.sh: reducing #utt from 33037 to 17433
+utils/subset_data_dir.sh: reducing #utt from 33037 to 15604
+local/plda_scoring.sh data/swbd_train data/sre10_train data/sre10_test exp/ivectors_swbd_train exp/ivectors_sre10_train exp/ivectors_sre10_test data/sre10_test/trials exp/scores_gmm_2048_ind_pooled
+local/plda_scoring.sh --use-existing-models true data/swbd_train data/sre10_train_female data/sre10_test_female exp/ivectors_swbd_train exp/ivectors_sre10_train_female exp/ivectors_sre10_test_female data/sre10_test_female/trials exp/scores_gmm_2048_ind_female
+local/plda_scoring.sh --use-existing-models true data/swbd_train data/sre10_train_male data/sre10_test_male exp/ivectors_swbd_train exp/ivectors_sre10_train_male exp/ivectors_sre10_test_male data/sre10_test_male/trials exp/scores_gmm_2048_ind_male
+local/plda_scoring.sh data/swbd_train_female data/sre10_train_female data/sre10_test_female exp/ivectors_swbd_train exp/ivectors_sre10_train_female exp/ivectors_sre10_test_female data/sre10_test_female/trials exp/scores_gmm_2048_dep_female
+local/plda_scoring.sh data/swbd_train_male data/sre10_train_male data/sre10_test_male exp/ivectors_swbd_train exp/ivectors_sre10_train_male exp/ivectors_sre10_test_male data/sre10_test_male/trials exp/scores_gmm_2048_dep_male
+GMM-2048 EER and mini-DCF
