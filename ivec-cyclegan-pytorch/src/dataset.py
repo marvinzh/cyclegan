@@ -2,17 +2,19 @@ import torch
 from torch.utils.data import Dataset
 import data_utils
 
-class SwbdMixer(Dataset):
-    def __init__(self,swbd_path, mixer_path):
+class IVecDataset(Dataset):
+    def __init__(self, path):
         super().__init__()
-        swbd_data, swbd_labels = data_utils.datalist_load(swbd_path)
-        mixer_data, mixer_labels = data_utils.datalist_load(mixer_path)
-        self.swbd = swbd_data
-        self.mixer = mixer_data
+        self.data, self.label = data_utils.datalist_load(path)
+        label = sorted(label)
+        label_set = set(label)
         
+        self.label2idx= {key:i for i,key in enumerate(label_set)}
+        self.idx2label = {i:key for i, key in enumerate(label_set)}
 
     def __getitem__(self,index):
-        pass
+        return self.data[index], self.label2idx[self.label[index]]
     
     def __len__(self):
-        pass
+        assert len(self.data) == len(self.label)
+        return len(self.data)
