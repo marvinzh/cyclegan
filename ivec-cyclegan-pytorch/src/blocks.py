@@ -3,16 +3,16 @@ import torch.nn.functional as F
 
 
 class ResidualBlock(nn.Module):
-    def __init__(self, in_features):
+    def __init__(self, nc_input):
         super(ResidualBlock, self).__init__()
 
-        conv_block = [  nn.ReflectionPad2d(1),
-                        nn.Conv2d(in_features, in_features, 3),
-                        nn.InstanceNorm2d(in_features),
-                        nn.ReLU(inplace=True),
-                        nn.ReflectionPad2d(1),
-                        nn.Conv2d(in_features, in_features, 3),
-                        nn.InstanceNorm2d(in_features)  ]
+        conv_block = [  nn.Conv1d(nc_input, nc_input, kernel_size=1, stride=1, padding=1),
+                        nn.LeakyReLU(0.2, inplace=True),
+                        nn.InstanceNorm1d(nc_input),
+                        nn.Conv1d(nc_input, nc_input, kernel_size=1, stride=1, padding=1),
+                        nn.LeakyReLU(0.2, inplace=True),
+                        nn.InstanceNorm1d(nc_input),
+                       ]
 
         self.conv_block = nn.Sequential(*conv_block)
 
