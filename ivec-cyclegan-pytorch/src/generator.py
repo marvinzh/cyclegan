@@ -19,7 +19,7 @@ class Generator(nn.Module):
         # upsampling
         self.tc1 = nn.ConvTranspose1d(128,64,3,stride=2,padding=1,output_padding=1)
         self.tc2 = nn.ConvTranspose1d(64,32,3,stride=2, padding=1, output_padding=1)
-        self.c4 = nn.Conv1d(32,1, kernel_size=3,stride=1,padding=1)
+        self.c4 = nn.Conv1d(32,nc_output, kernel_size=3,stride=1,padding=1)
         
         self.leaky_relu=nn.LeakyRelu(negative_slope=0.2)
 
