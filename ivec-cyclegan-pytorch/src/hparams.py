@@ -1,7 +1,7 @@
 from multiprocessing import cpu_count
 
-SWBD_PATH=""
-MIXER_PATH=""
+SWBD_PATH="/net/callisto/storage1/baiyuu/LY/data/swbd_train"
+MIXER_PATH="/net/callisto/storage1/baiyuu/LY/data/mixer_train"
 
 # generator setting
 nc_input = 1
