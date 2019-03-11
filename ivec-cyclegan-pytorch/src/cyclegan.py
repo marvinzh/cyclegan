@@ -10,6 +10,11 @@ from generator import Generator
 from discriminator import Discriminator
 import dataset
 import hparams as C
+from data_utils import ReplayBuffer
+
+
+def create_checkpoint():
+    pass
 
 
 def generator_trian_step():
@@ -64,6 +69,9 @@ if __name__ == "__main__":
     reals_label = torch.ones(C.batch_size)
     fakes_label = torch.zeros(C.batch_size)
 
+    fake_src_buffer = ReplayBuffer()
+    fake_trg_buffer = ReplayBuffer()
+
     for epoch in range(C.n_epoch):
         for i, (swbd, mixer) in enumerate(zip(swbd_data, mixer_data)):
 
@@ -98,7 +106,35 @@ if __name__ == "__main__":
             loss_g.backward()
             g_opt.step()
 
+            # source discriminator loss
             pred_real = d_src(mixer)
             loss_d_src_real = gan_loss(pred_real, reals_label)
 
-            
+            fake_src = fake_src_buffer.push_and_pop(src_fakes)
+            pred_fake = d_src(fake_src.detach())
+            loss_d_src_fake = gan_loss(pred_fake, fakes_label)
+
+            loss_d_src = (loss_d_src_real + loss_d_src_fake) * 0.5
+            d_src_opt.zero_grad()
+            loss_d_src.backward()
+            d_src_opt.step()
+
+            # target discriminator loss
+
+            pred_real = d_trg(swbd)
+            loss_d_trg_real = gan_loss(pred_real, reals_label)
+
+            fake_trg = fake_trg_buffer.push_and_pop(trg_fakes)
+            pred_fake = d_trg(fake_trg.detach())
+            loss_d_trg_fake = gan_loss(pred_fake, fakes_label)
+
+            loss_d_trg = (loss_d_trg_real + loss_d_trg_fake) * 0.5
+            d_trg_opt.zero_grad()
+            loss_d_trg.backward()
+            d_trg_opt.step()
+
+            print("Iteration: %4d \nG_loss:%.6f, G_T2S_loss: %.6f, G_S2T_loss: %.6f, G_identity_loss: %.6f, G_cycle_loss: %.6f" % (
+                i, loss_g.item(), loss_gan_src.item(), loss_gan_trg.item(), (loss_idt_src.item()+loss_idt_trg.item())*C.idt_lambda, C.cycle_gamma*(loss_cyc_src.item()+loss_cyc_trg.item()))
+            print("D_loss %.6f" % loss_d_src+loss_d_trg)
+
+        create_checkpoint()
