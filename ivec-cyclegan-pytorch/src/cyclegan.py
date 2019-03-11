@@ -135,6 +135,6 @@ if __name__ == "__main__":
 
             print("Iteration: %4d \nG_loss:%.6f, G_T2S_loss: %.6f, G_S2T_loss: %.6f, G_identity_loss: %.6f, G_cycle_loss: %.6f" % (
                 i, loss_g.item(), loss_gan_src.item(), loss_gan_trg.item(), (loss_idt_src.item()+loss_idt_trg.item())*C.idt_lambda, C.cycle_gamma*(loss_cyc_src.item()+loss_cyc_trg.item()))
-            print("D_loss %.6f" % loss_d_src+loss_d_trg)
+            print("D_loss: %.6f" % (loss_d_src+loss_d_trg))
 
         create_checkpoint()
