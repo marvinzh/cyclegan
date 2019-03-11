@@ -13,7 +13,7 @@ class IVecDataset(Dataset):
         self.idx2label = {i:key for i, key in enumerate(label_set)}
 
     def __getitem__(self,index):
-        return self.data[index], self.label2idx[self.label[index]]
+        return self.data[index]
     
     def __len__(self):
         assert len(self.data) == len(self.label)
