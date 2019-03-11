@@ -21,7 +21,7 @@ class Generator(nn.Module):
         self.tc2 = nn.ConvTranspose1d(64,32,3,stride=2, padding=1, output_padding=1)
         self.c4 = nn.Conv1d(32,nc_output, kernel_size=3,stride=1,padding=1)
         
-        self.leaky_relu=nn.LeakyRelu(negative_slope=0.2)
+        self.leaky_relu=nn.LeakyReLU(negative_slope=0.2)
 
         # # Initial convolution block       
         # model = [
