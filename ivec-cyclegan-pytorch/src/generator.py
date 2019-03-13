@@ -1,6 +1,7 @@
 import torch.nn as nn
 import torch.nn.functional as F
 from blocks import ResidualBlock
+import torch
 
 
 class Generator(nn.Module):
@@ -70,10 +71,12 @@ class Generator(nn.Module):
         a3 = self.leaky_relu(self.c3(a2))
         # a3: (B, 128, 150)
 
+        # print(a3.shape)
         a4 = a3
         for block in self.res_blocks:
             a4= block(a4)
         
+        # print(a4.shape)
         # a4: (B, 128, 150)
         a5 = self.leaky_relu(self.tc1(a4))
         # a5: (B, 64, 300)

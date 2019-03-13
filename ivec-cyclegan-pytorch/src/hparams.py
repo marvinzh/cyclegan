@@ -1,7 +1,9 @@
 from multiprocessing import cpu_count
 
-SWBD_PATH="/net/callisto/storage1/baiyuu/LY/data/swbd_train"
-MIXER_PATH="/net/callisto/storage1/baiyuu/LY/data/mixer_train"
+TAG=""
+SWBD_PATH="/gs/hs0/tga-tslab/baiyuu/data/ly/ivectors_swbd_train/"
+MIXER_PATH="/gs/hs0/tga-tslab/baiyuu/data/ly/ivectors_mixer_train/"
+EXP_DIR = ""
 
 # generator setting
 nc_input = 1
@@ -22,3 +24,6 @@ n_epoch = 20
 
 idt_lambda=5
 cycle_gamma = 10
+
+# other
+report_interval = 10

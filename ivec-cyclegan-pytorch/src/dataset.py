@@ -5,8 +5,8 @@ import data_utils
 class IVecDataset(Dataset):
     def __init__(self, path):
         super().__init__()
-        self.data, self.label = data_utils.datalist_load(path)
-        label = sorted(label)
+        self.data, label = data_utils.datalist_load(path)
+        self.label = sorted(label)
         label_set = set(label)
         
         self.label2idx= {key:i for i,key in enumerate(label_set)}
@@ -16,5 +16,5 @@ class IVecDataset(Dataset):
         return self.data[index]
     
     def __len__(self):
-        assert len(self.data) == len(self.label)
+        # assert len(self.data) == len(self.label)
         return len(self.data)
