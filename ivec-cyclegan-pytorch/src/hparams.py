@@ -1,9 +1,9 @@
 from multiprocessing import cpu_count
 
-TAG=""
+TAG="test"
 SWBD_PATH="/gs/hs0/tga-tslab/baiyuu/data/ly/ivectors_swbd_train/"
 MIXER_PATH="/gs/hs0/tga-tslab/baiyuu/data/ly/ivectors_mixer_train/"
-EXP_DIR = ""
+EXP_DIR = "/home/3/17R17067/GitHub/LY/ivec-cyclegan-pytorch/exp"
 
 # generator setting
 nc_input = 1

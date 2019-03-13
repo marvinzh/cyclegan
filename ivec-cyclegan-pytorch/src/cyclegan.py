@@ -20,13 +20,13 @@ fake_trg_buffer = ReplayBuffer()
 def create_checkpoint(g_s2t, g_t2s, d_src, d_trg, epoch):
     checkpoint_name = "model.%s.tar" % str(epoch)
     PATH = os.path.join(C.EXP_DIR, C.TAG, checkpoint_name)
-
-    # torch.save({
-    #     "g_s2t": g_s2t.state_dict(),
-    #     "g_t2s": g_t2s.state_dict(),
-    #     "d_src": d_src.state_dict(),
-    #     "d_trg": d_trg.state_dict(),
-    # }, PATH)
+    os.system("mkdir -p %s"%os.path.join(C.EXP_DIR,C.TAG))
+    torch.save({
+        "g_s2t": g_s2t.state_dict(),
+        "g_t2s": g_t2s.state_dict(),
+        "d_src": d_src.state_dict(),
+        "d_trg": d_trg.state_dict(),
+    }, PATH)
     print("Save checkpoint on %s" % PATH)
 
 
