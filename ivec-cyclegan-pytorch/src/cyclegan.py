@@ -18,9 +18,10 @@ fake_trg_buffer = ReplayBuffer()
 
 
 def create_checkpoint(g_s2t, g_t2s, d_src, d_trg, epoch):
-    checkpoint_name = "model.%s.tar" % str(epoch)
+    checkpoint_name = C.CKPT_PREFIX % str(epoch)
     PATH = os.path.join(C.EXP_DIR, C.TAG, checkpoint_name)
-    os.system("mkdir -p %s"%os.path.join(C.EXP_DIR,C.TAG))
+    # os.system("mkdir -p %s"%os.path.join(C.EXP_DIR,C.TAG))
+    os.makedirs(os.path.join(C.EXP_DIR,C.TAG), exist_ok=True)
     torch.save({
         "g_s2t": g_s2t.state_dict(),
         "g_t2s": g_t2s.state_dict(),
@@ -97,7 +98,7 @@ def discriminator_train_step(d, data, fake_buffer, loss, optim):
     return loss_d
 
 def validate_step():
-    psss
+    pass
 
 if __name__ == "__main__":
 

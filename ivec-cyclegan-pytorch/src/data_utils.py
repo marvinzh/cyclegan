@@ -56,3 +56,19 @@ class ReplayBuffer():
                 else:
                     to_return.append(element)
         return torch.cat(to_return)
+
+def adpt_ivec2
+
+def adpt_ivec2kaldi(data, labels, arkfilepath='./default_ivec.ark'):
+    # This function writes the output i-vectors from CycleGAN's generator into ark files.
+    # the format of created files corresponds to ivector's ark files in Kaldi.
+
+    with open(arkfilepath,"w+") as f:
+        for d, label in zip(data,labels):
+            temp_label = str(label)
+            temp_data = str(d).strip("[]")
+            temp_data = temp_data.replace(',', '')
+            temp_ivec = temp_label + '  [ ' + temp_data + ' ]'
+            f.write(temp_ivec + '\n')
+            # print("write: %s"%temp_ivec)
+        
