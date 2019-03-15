@@ -41,7 +41,7 @@ TEST_FOLDER = [
     "ivectors_sre10_test_c5"
 ]
 
-eval_files = [os.path.join(EVAL_BASE, eval_condition, files)
+test_files = [os.path.join(EVAL_BASE, eval_condition, files)
          for files in TEST_FOLDER]
 
 VALID_FOLDER=[

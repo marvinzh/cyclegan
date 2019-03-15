@@ -77,7 +77,7 @@ def main(model, in_folder_path, out_file_path):
 if __name__ == "__main__":
     g_s2t = load_checkpoint()
     g_s2t.eval()
-    main(g_s2t, C.eval_files, C.adapted_files)
+    main(g_s2t, C.test_files, C.adapted_files)
     # cmds = []
     # for in_file, out_file in zip(C.eval_files, C.adapted_files):
     #     print("reading file: %s" % in_file)
