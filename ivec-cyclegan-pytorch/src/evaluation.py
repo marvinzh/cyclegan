@@ -21,7 +21,6 @@ def load_checkpoint():
 
     return g_s2t
 
-
 def adapt_ivec(model, data, labels, output_path):
     n_data = len(data)
 
@@ -36,10 +35,7 @@ def adapt_ivec(model, data, labels, output_path):
         adapted.append(adapted_d)
         print("[%5d/%d] Adapting i-vector" % (i, n_data))
 
-    # for i, (adapted_d, label) in enumerate(zip(adapted, labels)):
     data_utils.adpt_ivec2kaldi(adapted, labels, arkfilepath=output_path)
-        # print("[%5d/%d] Save adapted i-vector at %s" % (i, n_data, output_path))
-
 
 def generate_and_run_sh(path, cmds):
     ARK2SCP_HEADER = '''
@@ -58,18 +54,38 @@ def generate_and_run_sh(path, cmds):
     os.chmod(path, mode=0o755)
     os.system("./%s" % path)
 
+def scoring():
+    # return scores
+    pass
+
+def main(model, in_folder_path, out_file_path):
+    cmds = []
+    for in_file, out_file in zip(in_folder_path, out_file_path):
+        print("reading file: %s" % in_file)
+        out_path, _= os.path.split(out_file)
+        data, labels = data_utils.datalist_load(in_file)
+        os.makedirs(out_path, exist_ok=True)
+        adapt_ivec(g_s2t, data, labels, out_file)
+        cmds.append(ARK2SCP_CMD % (out_file, os.path.join(
+            out_path, "ivector.ark"), os.path.join(out_path, "ivector.scp")))
+
+    generate_and_run_sh("ivec_ark2scp.sh", cmds)
+    # return scoring()
+    # pass
+
 
 if __name__ == "__main__":
     g_s2t = load_checkpoint()
     g_s2t.eval()
+    main(g_s2t, C.eval_files, C.adapted_files)
+    # cmds = []
+    # for in_file, out_file in zip(C.eval_files, C.adapted_files):
+    #     print("reading file: %s" % in_file)
+    #     out_path, _= os.path.split(out_file)
+    #     data, labels = data_utils.datalist_load(in_file)
+    #     os.makedirs(out_path, exist_ok=True)
+    #     adapt_ivec(g_s2t, data, labels, out_file)
+    #     cmds.append(ARK2SCP_CMD % (out_file, os.path.join(
+    #         out_path, "ivector.ark"), os.path.join(out_path, "ivector.scp")))
 
-    cmds = []
-    for in_file, out_path, out_file in zip(C.evals, C.eval_outputs, C.OUT_FILES):
-        print("reading file: %s" % in_file)
-        data, labels = data_utils.datalist_load(in_file)
-        os.makedirs(out_path, exist_ok=True)
-        adapt_ivec(g_s2t, data, labels, os.path.join(out_path, out_file))
-        cmds.append(ARK2SCP_CMD % (os.path.join(out_path, out_file), os.path.join(
-            out_path, "ivector.ark"), os.path.join(out_path, "ivector.scp")))
-
-    generate_and_run_sh("ivec_ark2scp.sh", cmds)
+    # generate_and_run_sh("ivec_ark2scp.sh", cmds)
