@@ -127,6 +127,7 @@ if __name__ == "__main__":
     torch.backends.cudnn.deterministic = True
     torch.backends.cudnn.benchmark = True
 
+
     cycle_gan = CycleGAN(
         Generator(C.g_conv_ch,C.g_trans_ch,C.g_kernels, C.g_strides,C.g_n_res_block, C.g_leaky_slop),
         Generator(C.g_conv_ch,C.g_trans_ch,C.g_kernels, C.g_strides,C.g_n_res_block, C.g_leaky_slop),
@@ -190,6 +191,7 @@ if __name__ == "__main__":
                 logging.info("D: %.6f" % (loss_d_src+loss_d_trg))
 
         create_checkpoint(cycle_gan, epoch)
+        
         if epoch % C.ckpt_interval == 0:
             err, dcf2, dcf3 = evaluation.main(cycle_gan)
             rst_path = os.path.join(C.EXP_DIR, C.TAG, "result.txt")

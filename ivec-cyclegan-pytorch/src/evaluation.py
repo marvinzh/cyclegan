@@ -34,8 +34,7 @@ def adapt_ivec(model, data, labels, output_path):
         data = data.cuda()
         
     adapted = []
-    for i, (d, label) in enumerate(zip(data, labels)):
-        d_tensor = torch.Tensor(d)
+    for d_tensor in data:
         d_tensor = d_tensor.view(1, 1, -1)
         adapted_d = model.src2trg(d_tensor)
         adapted_d = adapted_d.detach().squeeze()
