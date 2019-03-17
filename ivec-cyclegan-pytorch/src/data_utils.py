@@ -57,7 +57,6 @@ class ReplayBuffer():
                     to_return.append(element)
         return torch.cat(to_return)
 
-def adpt_ivec2
 
 def adpt_ivec2kaldi(data, labels, arkfilepath='./default_ivec.ark'):
     # This function writes the output i-vectors from CycleGAN's generator into ark files.

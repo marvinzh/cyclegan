@@ -3,14 +3,14 @@ import torch.nn.functional as F
 
 
 class ResidualBlock(nn.Module):
-    def __init__(self, nc_input):
+    def __init__(self, nc_input, leaky_slope=0.2):
         super(ResidualBlock, self).__init__()
 
         conv_block = [  nn.Conv1d(nc_input, nc_input, kernel_size=1, stride=1),
-                        nn.LeakyReLU(0.2, inplace=True),
+                        nn.LeakyReLU(leaky_slope, inplace=True),
                         nn.InstanceNorm1d(nc_input),
                         nn.Conv1d(nc_input, nc_input, kernel_size=1, stride=1),
-                        nn.LeakyReLU(0.2, inplace=True),
+                        nn.LeakyReLU(leaky_slope, inplace=True),
                         nn.InstanceNorm1d(nc_input),
                        ]
 
